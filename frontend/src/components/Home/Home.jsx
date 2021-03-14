@@ -1,17 +1,19 @@
 import React from "react";
 import bemCssModules from "bem-css-modules";
 import Search from "../Search/Search";
+import { useHistory } from "react-router";
 
 import { default as HomeStyles } from "./Home.module.scss";
-
+import showFindItems from "../findItems";
 
 import bg from "../../assets/bg.jpg";
+
+const trending = ["flower", "wallpapers", "backgroungs", "happy", "love"];
 
 const style = bemCssModules(HomeStyles);
 
 const Home = () => {
-
-
+  const history = useHistory();
 
   return (
     <div
@@ -30,7 +32,18 @@ const Home = () => {
         </span>
         <Search />
         <span className={style("trends")}>
-          Trending: flower, wallpapers, backgroungs, happy, love
+          Trending:{" "}
+          {trending.map((item) => (
+            <p
+              onClick={() => {
+                showFindItems(item, history);
+              }}
+              key={item}
+              className={style("trends--item")}
+            >
+              {item}
+            </p>
+          ))}
         </span>
       </div>
     </div>

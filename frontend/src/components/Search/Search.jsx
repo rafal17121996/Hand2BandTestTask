@@ -6,8 +6,10 @@ import { useHistory } from "react-router";
 import { StoreContext } from "../../store/StoreProvider";
 import axios from "axios";
 
-const Search = () => {
-  const [query, setQuery] = useState([]);
+import showFindItems from "../findItems";
+
+const Search = ({ resetPage }) => {
+  const [query, setQuery] = useState("");
   const [autocomplete, setAutocomplete] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
@@ -38,15 +40,13 @@ const Search = () => {
 
   const searchPhotos = async (e) => {
     e.preventDefault();
-    showFindItems(query);
-    setIsOpen(false);
-    setQuery("");
+    if (query.replace(/\s/g, "").length) {
+      showFindItems(query, history);
+      setIsOpen(false);
+      setQuery("");
+      resetPage ? resetPage() : null;
+    }
   };
-
-  const showFindItems = (link) =>
-    history.push({
-      pathname: `/s/${link}`,
-    });
 
   const findHints = () => {
     axios
@@ -73,7 +73,7 @@ const Search = () => {
     ? autocomplete.map((item) => (
         <li
           onClick={() => {
-            showFindItems(item.query);
+            showFindItems(item.query, history);
             setIsOpen(false);
             setQuery("");
           }}

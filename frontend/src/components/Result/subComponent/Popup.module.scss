@@ -33,17 +33,22 @@
   &__auth{
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
     img{
       display: block;
       width: 50px;
       border-radius: 50%;
       border: 1px solid rgb(153, 153, 153);
       margin-right: 10px;
+      
     }
     h1{
       display: block;
       font-size: 1rem;
     }
+  }
+  &__name{
+    padding: 20px;
   }
   &__infoWrapper{
     width: 90%;
@@ -58,5 +63,12 @@ float: left;
   }
   &__date{
 float: right;
+  }
+  &__close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    font-size: 2rem;
   }
 }

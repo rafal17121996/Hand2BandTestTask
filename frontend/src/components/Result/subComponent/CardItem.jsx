@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import bemCssModules from "bem-css-modules";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -20,15 +20,7 @@ const CardItem = (props) => {
         width="100%"
         effect="blur"
    />
-      {/* <img      
-      onClick={() => setIsOpen(true)}
-        className={style("card--image")}
-        alt={props.pic.alt_description}
-        src={props.pic.urls.full}
-        width="100%"
-        loading= 'lazy'
-   /> */}
-  
+
       <Popup
         pic={props.pic}
         open={isOpen}

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDom from "react-dom";
 import bemCssModules from "bem-css-modules";
 
@@ -18,7 +18,7 @@ const Popup = ({ pic, open, onClose }) => {
     if (event.keyCode === 27) {
       onClose();
     }
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
@@ -39,9 +39,11 @@ const Popup = ({ pic, open, onClose }) => {
     <div className={style("")}>
       <div className={style("popup_background")} />
       <div className={style("popup")}>
+        <div onClick={() => onClose()} className={style("close")}>
+          <i className="fas fa-times"></i>
+        </div>
         <div className={style("auth")}>
           <img
-            className={style("logo")}
             src={pic.user.profile_image.small}
             alt=""
           />
@@ -53,8 +55,10 @@ const Popup = ({ pic, open, onClose }) => {
         </div>
         <div className={style("infoWrapper")}>
           <i className="fas fa-map-marker-alt"></i>
-          <span className={style("place")}>{pic.user.location || 'Unknown'}</span>
-          <span className={style("date")}>{place || 'Unknown'}</span>
+          <span className={style("place")}>
+            {pic.user.location || "Unknown"}
+          </span>
+          <span className={style("date")}>{place || "Unknown"}</span>
         </div>
       </div>
     </div>,

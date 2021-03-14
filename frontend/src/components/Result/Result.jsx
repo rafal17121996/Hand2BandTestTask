@@ -9,6 +9,7 @@ import Search from "../Search/Search";
 import CardItem from "./subComponent/CardItem";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import showFindItems from "../findItems";
 
 const style = bemCssModules(ResultStyles);
 
@@ -60,24 +61,21 @@ const Result = () => {
     }
   };
 
-  const showFindItems = (link) =>
-    history.push({
-      pathname: `/s/${link}`,
-    });
-
 
   return (
     <section>
       <Link className={style("back")} to="/">
       <i className="fas fa-chevron-circle-left"></i>
       </Link>
-      <Search />
+      <Search
+      resetPage={()=>setPage(1)}
+      />
       <ScrollMenu
         data={relatedSearches.map((item) => (
           <div
             key={item.title}
             className={style("item")}
-            onClick={() => showFindItems(item.title)}
+            onClick={() => (showFindItems(item.title, history),setPage(1))}
           >
             <p>{item.title}</p>
           </div>

@@ -13,12 +13,11 @@
     display: flex;
     flex-direction: column;
     @media only screen and (max-width: 850px) {
-      width: 80%
+      width: 80%;
     }
-        @media only screen and (max-width: 600px) {
-      width: 900%
+    @media only screen and (max-width: 600px) {
+      width: 900%;
     }
-
   }
   &__title {
     font-size: 4.4rem;
@@ -27,7 +26,6 @@
     }
     @media only screen and (max-width: 600px) {
       text-align: center;
-
     }
   }
   &__description {
@@ -42,18 +40,23 @@
       font-size: 1rem;
     }
     @media only screen and (max-width: 650px) {
-      font-size: .9rem;
+      font-size: 0.9rem;
       text-align: center;
     }
     a {
       color: white;
     }
   }
-  &__trends{
+  &__trends {
     @media only screen and (max-width: 650px) {
-      font-size: .9rem;
+      font-size: 0.9rem;
       text-align: center;
     }
+  }
+  &__trends--item {
+    display: inline;
+    margin-right: 5px;
+    cursor: pointer;
   }
   &__form {
     margin-bottom: 24px;
@@ -89,7 +92,7 @@
       outline: none;
     }
   }
-  &__autocomplete{
+  &__autocomplete {
     position: absolute;
     bottom: -10px;
     transform: translateY(100%);
@@ -98,20 +101,20 @@
     right: 0;
     color: black;
     background-color: white;
-    ul{
-      list-style:none;
+    ul {
+      list-style: none;
     }
-    li{
+    li {
       padding: 5px;
       cursor: pointer;
-      &:hover{
+      &:hover {
         color: rgb(83, 83, 83);
       }
     }
   }
 }
 
-.fa-times{
+.fa-times {
   float: right;
   cursor: pointer;
   margin-right: 15px;
