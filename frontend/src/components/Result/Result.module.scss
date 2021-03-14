@@ -1,0 +1,127 @@
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.Card {
+  column-count: 3;
+  width: 80vw;
+  min-height: 100vh;
+  margin: 0 auto;
+
+
+&__item {
+  text-align: center;
+  margin-right: 15px;
+  min-width: 150px;
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px solid rgb(216, 216, 216);
+  cursor: pointer;
+}
+
+  &__title{
+    width: 80vw;
+    display: block;
+    margin: 0 auto;
+    font-size: 3rem;
+    padding: 10px 0;
+  }
+
+  &__info{
+    text-align: center;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    column-count: 1;
+  }
+
+  &__card--image {
+    animation: fadein 2s 0.5s both;
+    margin-top: 1rem;
+    cursor: pointer;
+    image-rendering: crisp-edges;
+  }
+  &__page{
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__inputPage{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 0 10px;
+  }
+  &__form {
+    margin-bottom: 24px;
+  }
+  &__input-container {
+    position: relative;
+    margin: 20px auto;
+    background-color: rgb(211, 211, 211);
+    color: rgb(190, 188, 188);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    i {
+      font-size: 2rem;
+      padding: 10px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    padding: 0.8rem 2rem;
+    line-height: 2.8rem;
+    border: transparent;
+    background-color: rgb(211, 211, 211);
+    @media only screen and (max-width: 950px) {
+      font-size: 1rem;
+    }
+    &:active {
+      outline: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__autocomplete{
+    z-index: 999;
+    position: absolute;
+    bottom: -10px;
+    transform: translateY(100%);
+    border-radius: 5px;
+    left: 0;
+    right: 0;
+    color: black;
+    background-color: rgb(211, 211, 211);
+    ul{
+      list-style:none;
+    }
+    li{
+      padding: 5px;
+      cursor: pointer;
+      &:hover{
+        color: rgb(83, 83, 83);
+      }
+    }
+  }
+  &__back{
+    z-index: 999;
+    text-decoration: none;
+    color: black;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+  }
+}
+
+

@@ -1,0 +1,118 @@
+.Home {
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (max-width: 850px) {
+      width: 80%
+    }
+        @media only screen and (max-width: 600px) {
+      width: 900%
+    }
+
+  }
+  &__title {
+    font-size: 4.4rem;
+    @media only screen and (max-width: 950px) {
+      font-size: 3.8rem;
+    }
+    @media only screen and (max-width: 600px) {
+      text-align: center;
+
+    }
+  }
+  &__description {
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 2;
+    @media only screen and (max-width: 950px) {
+      font-size: 1rem;
+    }
+    @media only screen and (max-width: 650px) {
+      font-size: .9rem;
+      text-align: center;
+    }
+    a {
+      color: white;
+    }
+  }
+  &__trends{
+    @media only screen and (max-width: 650px) {
+      font-size: .9rem;
+      text-align: center;
+    }
+  }
+  &__form {
+    margin-bottom: 24px;
+  }
+  &__input-container {
+    position: relative;
+    background-color: white;
+    color: rgb(190, 188, 188);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 2rem;
+      padding: 10px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    padding: 0.8rem 2rem;
+    line-height: 2.8rem;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    @media only screen and (max-width: 950px) {
+      font-size: 1rem;
+    }
+    &:active {
+      outline: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__autocomplete{
+    position: absolute;
+    bottom: -10px;
+    transform: translateY(100%);
+    border-radius: 5px;
+    left: 0;
+    right: 0;
+    color: black;
+    background-color: white;
+    ul{
+      list-style:none;
+    }
+    li{
+      padding: 5px;
+      cursor: pointer;
+      &:hover{
+        color: rgb(83, 83, 83);
+      }
+    }
+  }
+}
+
+.fa-times{
+  float: right;
+  cursor: pointer;
+  margin-right: 15px;
+}
