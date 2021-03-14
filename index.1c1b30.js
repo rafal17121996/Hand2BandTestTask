@@ -8267,7 +8267,13 @@ var Result = () => {
       params: {
         key: item
       }
-    }).then(res => setRelatedSearches(res.data.related_searches));
+    }).then(res => {
+      if (res.errors) {
+        console.log("error occurred: ", res.errors[0]);
+      } else {
+        setRelatedSearches(res.data.related_searches);
+      }
+    });
   }, [item, page]);
 
   var handlePage = i => {
