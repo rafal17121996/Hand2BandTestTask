@@ -8029,8 +8029,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var Search = () => {
-  var [query, setQuery] = (0,react.useState)([]);
+var Search = (_ref) => {
+  var {
+    resetPage
+  } = _ref;
+  var [query, setQuery] = (0,react.useState)("");
   var [autocomplete, setAutocomplete] = (0,react.useState)([]);
   var [isOpen, setIsOpen] = (0,react.useState)(false);
   var history = useHistory();
@@ -8059,15 +8062,19 @@ var Search = () => {
   };
 
   var searchPhotos = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(function* (e) {
+    var _ref2 = _asyncToGenerator(function* (e) {
       e.preventDefault();
-      findItems(query, history);
-      setIsOpen(false);
-      setQuery("");
+
+      if (query.replace(/\s/g, "").length) {
+        findItems(query, history);
+        setIsOpen(false);
+        setQuery("");
+        resetPage ? resetPage() : null;
+      }
     });
 
     return function searchPhotos(_x) {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -8122,7 +8129,7 @@ var Search = () => {
 var react_lazy_load_image_component_build = __webpack_require__(6);
 ;// CONCATENATED MODULE: ./src/components/Result/subComponent/Popup.module.scss
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const Popup_module = ({"Popup__popup_background":"Popup__popup_background","Popup__popup":"Popup__popup","Popup__imgWrapper":"Popup__imgWrapper","Popup__auth":"Popup__auth","Popup__infoWrapper":"Popup__infoWrapper","Popup__place":"Popup__place","Popup__date":"Popup__date","Popup__close":"Popup__close"});
+/* harmony default export */ const Popup_module = ({"Popup__popup_background":"Popup__popup_background","Popup__popup":"Popup__popup","Popup__imgWrapper":"Popup__imgWrapper","Popup__auth":"Popup__auth","Popup__name":"Popup__name","Popup__infoWrapper":"Popup__infoWrapper","Popup__place":"Popup__place","Popup__date":"Popup__date","Popup__close":"Popup__close"});
 ;// CONCATENATED MODULE: ./src/components/Result/subComponent/Popup.jsx
 
 
@@ -8165,11 +8172,10 @@ var Popup = (_ref) => {
     onClick: () => onClose(),
     className: style("close")
   }, /*#__PURE__*/react.createElement("i", {
-    class: "fas fa-times"
+    className: "fas fa-times"
   })), /*#__PURE__*/react.createElement("div", {
     className: style("auth")
   }, /*#__PURE__*/react.createElement("img", {
-    className: style("logo"),
     src: pic.user.profile_image.small,
     alt: ""
   }), /*#__PURE__*/react.createElement("h1", {
@@ -8277,11 +8283,13 @@ var Result = () => {
     to: "/"
   }, /*#__PURE__*/react.createElement("i", {
     className: "fas fa-chevron-circle-left"
-  })), /*#__PURE__*/react.createElement(Search_Search, null), /*#__PURE__*/react.createElement((build_default()), {
+  })), /*#__PURE__*/react.createElement(Search_Search, {
+    resetPage: () => setPage(1)
+  }), /*#__PURE__*/react.createElement((build_default()), {
     data: relatedSearches.map(item => /*#__PURE__*/react.createElement("div", {
       key: item.title,
       className: Result_style("item"),
-      onClick: () => findItems(item.title, history)
+      onClick: () => (findItems(item.title, history), setPage(1))
     }, /*#__PURE__*/react.createElement("p", null, item.title)))
   }), /*#__PURE__*/react.createElement("h1", {
     className: Result_style("title")
